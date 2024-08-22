@@ -1,18 +1,13 @@
 # Databricks notebook source
 from flask import Flask
 from flask_cors import CORS
-import msal
 
 app = Flask(__name__)
 CORS(app)
 
-from app.routes import *
+# # Placeholder configuration for future use
+# app.config["CLIENT_ID"] = "client-id"  # Replace with actual client ID when ready
+# app.config["CLIENT_SECRET"] = "client-secret"  # Replace with actual client secret when ready
+# app.config["AUTHORITY"] = "https://login.microsoftonline.com/tenant-id"  # Replace with actual tenant ID when ready
 
-def create_msal_app():
-    return msal.ConfidentialClientApplication(
-        app.config["CLIENT_ID"],
-        authority=app.config["AUTHORITY"],
-        client_credential=app.config["CLIENT_SECRET"],
-    )
-
-msal_app = create_msal_app()
+from app import routes
